@@ -1,11 +1,11 @@
 # Mobile Percentage Calc
 
-A very basic percentage calc created with MeteorJS + MantraJS
+A set of common percentage calculators built with MeteorJS + MantraJS
 
-##### Requirements:
+#### Requirements:
 - Genymotion
 
-##### Instructions to run on device:
+#### Instructions to run on device:
 You must create a Android Virtual Device on Genymotion
 Start the Android Virtual Device
 ```sh
