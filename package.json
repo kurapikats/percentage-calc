@@ -6,7 +6,8 @@
     "test": "mocha .scripts/mocha_boot.js client/**/tests/**/*.js --compilers js:babel-core/register",
     "storybook": "start-storybook -p 9001",
     "dev": "meteor",
-    "dev-android": "meteor run android-device"
+    "dev-android": "meteor run android-device",
+    "dev-ios": "meteor run ios-device"
   },
   "repository": {
     "type": "git",
