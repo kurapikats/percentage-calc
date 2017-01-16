@@ -8,15 +8,21 @@ This is a Cordova mobile application built with MeteorJS + MantraJS.
 * [MeteorJS](https://www.meteor.com/) 1.3+
 * [Git](https://git-scm.com/)
 
-##### Instructions to run on an Android Emulator:
+##### Instructions to run on Android and iOS emulator:
 
 ```sh
-# Create an Android Virtual Device on Genymotion
-# Start the Android Virtual Device
 $ git clone https://github.com/kurapikats/percentage-calc.git
 $ cd percentage-calc
 $ meteor npm install
+
+# For Android Emulator
+# Create an Android Virtual Device on Genymotion
+# Start the Android Virtual Device
 $ meteor run android-device
+
+# For iOS Emulator
+$ meteor run ios-device
+
 ```
 
 ##### Basic Percentage Calculators:
