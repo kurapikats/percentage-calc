@@ -5,7 +5,7 @@ This is a Cordova mobile application built with MeteorJS + MantraJS.
 ##### Requirements to run:
 
 * [Genymotion](https://www.genymotion.com/) (Android)
-* Xcode (iOS)
+* [Xcode](https://developer.apple.com/xcode/) (iOS)
 * [MeteorJS](https://www.meteor.com/) 1.3+
 * [Git](https://git-scm.com/)
 
