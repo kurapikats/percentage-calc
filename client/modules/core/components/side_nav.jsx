@@ -27,26 +27,28 @@ class SideNav extends React.Component {
               <div class="background">
                 <img src="/images/abstract-300x400-1.jpg" />
               </div>
-              <a href="#!user">
+              <a href="#">
                 <img class="circle" src="/images/shih-tzu.jpg" />
               </a>
-              <a href="#!name">
+              <a href="#">
                 <span class="white-text name">Onin</span>
               </a>
-              <a href="#!email">
+              <a href="#">
                 <span class="white-text email">jesus.nana@gmail.com</span>
               </a>
             </div>
           </li>
           <li><a class="subheader">Percentage Calculators</a></li>
+          <li><div class="divider"></div></li>
+          <li><a class="subheader">Basics</a></li>
           <li>
             <a href="/" class="waves-effect">
-              <i class="material-icons">star</i>Discount
+              <i class="material-icons red-text">remove_circle</i>Discount
             </a>
           </li>
           <li>
             <a href="/Pincrease" class="waves-effect">
-              <i class="material-icons">add</i>Increase
+              <i class="material-icons green-text">add_circle</i>Increase
             </a>
           </li>
           <li><div class="divider"></div></li>
@@ -55,22 +57,21 @@ class SideNav extends React.Component {
           </li>
           <li>
             <a href="/XpercentY" class="waves-effect">
-              <i class="material-icons">tab</i>What is 10% of 100?
+              <i class="material-icons orange-text">whatshot</i>What is 10% of 100?
             </a>
           </li>
           <li>
             <a href="/YpercentX" class="waves-effect">
-              <i class="material-icons">tab</i>50 is what percent of 200?
+              <i class="material-icons blue-text">apps</i>50 is what percent of 200?
             </a>
           </li>
           <li>
             <a href="/Ypercent" class="waves-effect">
-              <i class="material-icons">tab</i>10 is 50% of what?
+              <i class="material-icons brown-text">tab</i>10 is 50% of what?
             </a>
           </li>
         </ul>
-        <a href="#" data-activates="slide-out" class="button-collapse"
-          style={{color: '#26a69a'}}>
+        <a href="#" data-activates="slide-out" class="button-collapse">
           <i class="material-icons">menu</i>
         </a>
       </div>

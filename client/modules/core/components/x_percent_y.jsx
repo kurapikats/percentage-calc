@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../libs/common.js';
 import CalcButton from './calc_button.jsx';
+import FloatingMenu from './floating_menu.jsx';
 
 class XPercentY extends React.Component {
   constructor(props) {
@@ -12,6 +13,11 @@ class XPercentY extends React.Component {
       x_value: "",
       result: 0
     }
+  }
+
+  componentDidMount() {
+    Materialize.fadeInImage('#container');
+    $("#container").animate({"left":"0px"}, "slow");
   }
 
   handleSubmit(e) {
@@ -62,55 +68,60 @@ class XPercentY extends React.Component {
   render() {
     return (
       <div class="row">
-        <h5 class="center teal-text">What is __% of __?</h5>
-        <h6 class="center grey-text">Q: What is 50% of 100? A: 50</h6><br/>
-        <form class="col s12" onSubmit={this.handleSubmit.bind(this)}>
-          <div class="col s1"></div>
-          <div class="col s10">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">input</i>
-              <input
-                type="number"
-                name="p_value"
-                value={this.state.p_value}
-                onChange={this.handlePChange.bind(this)}
-                onBlur={this.calculate.bind(this)}
-                autoComplete="off"
-                class="validate"
-                placeholder="ie. 50%"
-                required
-              />
-              <label class="active" for="p_value">What is (%)</label>
+        <div id="container" style={{position: 'absolute', left: '-300px'}}>
+          <h5 class="center deep-purple-text text-darken-2">
+            What is __% of __?</h5>
+          <h6 class="center grey-text">Q: What is 50% of 100? A: 50</h6><br/>
+          <form class="col s12" onSubmit={this.handleSubmit.bind(this)}>
+            <div class="col s1"></div>
+            <div class="col s10">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">input</i>
+                <input
+                  type="number"
+                  name="p_value"
+                  value={this.state.p_value}
+                  onChange={this.handlePChange.bind(this)}
+                  onBlur={this.calculate.bind(this)}
+                  autoComplete="off"
+                  class="validate"
+                  placeholder="ie. 50%"
+                  required
+                />
+                <label class="active" for="p_value">What is (%)</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">input</i>
+                <input
+                  type="number"
+                  name="x_value"
+                  value={this.state.x_value}
+                  onChange={this.handleXChange.bind(this)}
+                  onBlur={this.calculate.bind(this)}
+                  autoComplete="off"
+                  class="validate"
+                  placeholder="ie. 100"
+                  required
+                />
+                <label class="active" for="x_value">of</label>
+              </div>
             </div>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">input</i>
-              <input
-                type="number"
-                name="x_value"
-                value={this.state.x_value}
-                onChange={this.handleXChange.bind(this)}
-                onBlur={this.calculate.bind(this)}
-                autoComplete="off"
-                class="validate"
-                placeholder="ie. 100"
-                required
-              />
-              <label class="active" for="x_value">of</label>
-            </div>
-          </div>
-          <div class="col s1"></div>
+            <div class="col s1"></div>
 
-          <div class="center">
-            <CalcButton
-              a_value={this.state.p_value}
-              b_value={this.state.x_value}
-            />
-          </div>
-          <p>
-            {this.getQuestion()}
-            Answer: <strong>{this.state.result.formatMoney(2)}</strong>
-          </p>
-        </form>
+            <div class="center">
+              <CalcButton
+                a_value={this.state.p_value}
+                b_value={this.state.x_value}
+              />
+            </div>
+            <p>
+              {this.getQuestion()}
+              Answer: <strong>{this.state.result.formatMoney(2)}</strong>
+            </p>
+          </form>
+        </div>
+
+        <FloatingMenu />
       </div>
     );
   }

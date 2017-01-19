@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import SideNav from './side_nav.jsx';
+import NavBar from './nav_bar.jsx';
 
 export default class Layout extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class Layout extends Component {
 
     return (
       <div class="flow-text">
-        <SideNav />
+        <NavBar />
         {content()}
       </div>
     );

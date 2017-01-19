@@ -40,6 +40,16 @@
 /** end fix for materialize 0.97.7 **/
 
 body {
-  border-left: 5px solid #26a69a;
-  border-right: 5px solid #26a69a;
+  /*background-color: #e9ebee;*/
+  /*display: flex;
+  min-height: 100vh;
+  flex-direction: column;*/
+}
+
+main {
+  /*flex: 1 0 auto;*/
+}
+
+div#sidenav-overlay {
+  z-index: auto !important;
 }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import '../libs/common.js';
 import CalcButton from './calc_button.jsx';
+import FloatingMenu from './floating_menu.jsx';
 
 export default class Home extends Component {
   constructor(props) {
@@ -13,6 +14,11 @@ export default class Home extends Component {
       discounted_price: 0,
       discount_amount: 0
     }
+  }
+
+  componentDidMount() {
+    Materialize.fadeInImage('#container');
+    $("#container").animate({"left":"0px"}, "slow");
   }
 
   handleSubmit(e) {
@@ -51,59 +57,63 @@ export default class Home extends Component {
   render() {
     return (
       <div class="row">
-        <h5 class="center teal-text">Discount</h5>
-        <form class="col s12" onSubmit={this.handleSubmit.bind(this)}>
-          <div class="col s1"></div>
-          <div class="col s10">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">input</i>
-              <input
-                type="number"
-                name="original_price"
-                value={this.state.original_price}
-                onChange={this.handlePriceChange.bind(this)}
-                onBlur={this.calculate.bind(this)}
-                autoComplete="off"
-                min="0"
-                class="validate"
-                placeholder="ie. 100"
-                required
-              />
-              <label class="active" for="original_price">Initial Value</label>
+        <div id="container" style={{position: 'absolute', left: '-300px'}}>
+          <h5 class="center deep-purple-text text-darken-2">% Discount</h5>
+          <form class="col s12" onSubmit={this.handleSubmit.bind(this)}>
+            <div class="col s1"></div>
+            <div class="col s10">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">input</i>
+                <input
+                  type="number"
+                  name="original_price"
+                  value={this.state.original_price}
+                  onChange={this.handlePriceChange.bind(this)}
+                  onBlur={this.calculate.bind(this)}
+                  autoComplete="off"
+                  min="1"
+                  class="validate"
+                  placeholder="ie. 100"
+                  required
+                />
+                <label class="active" for="original_price">Initial Value</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">input</i>
+                <input
+                  type="number"
+                  name="discount_percentage"
+                  value={this.state.discount_percentage}
+                  onChange={this.handleDiscountChange.bind(this)}
+                  onBlur={this.calculate.bind(this)}
+                  autoComplete="off"
+                  min="0"
+                  max="100"
+                  class="validate"
+                  placeholder="ie. 10"
+                  required
+                />
+                <label class="active" for="discount_percentage">Discount %</label>
+              </div>
             </div>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">input</i>
-              <input
-                type="number"
-                name="discount_percentage"
-                value={this.state.discount_percentage}
-                onChange={this.handleDiscountChange.bind(this)}
-                onBlur={this.calculate.bind(this)}
-                autoComplete="off"
-                min="0"
-                max="100"
-                class="validate"
-                placeholder="ie. 10"
-                required
-              />
-              <label class="active" for="discount_percentage">Discount %</label>
-            </div>
-          </div>
-          <div class="col s1"></div>
+            <div class="col s1"></div>
 
-          <div class="center">
-            <CalcButton
-              a_value={this.state.original_price}
-              b_value={this.state.discount_percentage}
-            />
-          </div>
-          <p>
-            Final Value:&nbsp;
+            <div class="center">
+              <CalcButton
+                a_value={this.state.original_price}
+                b_value={this.state.discount_percentage}
+              />
+            </div>
+            <p>
+              Final Value:&nbsp;
               <strong>{this.state.discounted_price.formatMoney(2)}</strong><br/>
-            Difference:&nbsp;
+              Difference:&nbsp;
               <strong>{this.state.discount_amount.formatMoney(2)}</strong>
-          </p>
-        </form>
+            </p>
+          </form>
+        </div>
+
+        <FloatingMenu />
       </div>
     );
   }

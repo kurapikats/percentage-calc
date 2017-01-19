@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../libs/common.js';
 import CalcButton from './calc_button.jsx';
+import FloatingMenu from './floating_menu.jsx';
 
 class YPercent extends React.Component {
   constructor(props) {
@@ -12,6 +13,11 @@ class YPercent extends React.Component {
       p_value: "",
       result: 0
     }
+  }
+
+  componentDidMount() {
+    Materialize.fadeInImage('#container');
+    $("#container").animate({"left":"0px"}, "slow");
   }
 
   handleSubmit(e) {
@@ -72,55 +78,60 @@ class YPercent extends React.Component {
   render() {
     return (
       <div class="row">
-        <h5 class="center teal-text">__ is __% of what?</h5>
-        <h6 class="center grey-text">Q: 10 is 50% of what? A: 20</h6><br/>
-        <form class="col s12" onSubmit={this.handleSubmit.bind(this)}>
-          <div class="col s1"></div>
-          <div class="col s10">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">input</i>
-              <input
-                type="number"
-                name="y_value"
-                value={this.state.y_value}
-                onChange={this.handleYChange.bind(this)}
-                onBlur={this.calculate.bind(this)}
-                autoComplete="off"
-                class="validate"
-                placeholder="ie. 10"
-                required
-              />
-              <label class="active" for="y_value">__ is</label>
+        <div id="container" style={{position: 'absolute', left: '-300px'}}>
+          <h5 class="center deep-purple-text text-darken-2">
+            __ is __% of what?</h5>
+          <h6 class="center grey-text">Q: 10 is 50% of what? A: 20</h6><br/>
+          <form class="col s12" onSubmit={this.handleSubmit.bind(this)}>
+            <div class="col s1"></div>
+            <div class="col s10">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">input</i>
+                <input
+                  type="number"
+                  name="y_value"
+                  value={this.state.y_value}
+                  onChange={this.handleYChange.bind(this)}
+                  onBlur={this.calculate.bind(this)}
+                  autoComplete="off"
+                  class="validate"
+                  placeholder="ie. 10"
+                  required
+                />
+                <label class="active" for="y_value">__ is</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">input</i>
+                <input
+                  type="number"
+                  name="p_value"
+                  value={this.state.p_value}
+                  onChange={this.handlePChange.bind(this)}
+                  onBlur={this.calculate.bind(this)}
+                  autoComplete="off"
+                  class="validate"
+                  placeholder="ie. 50%"
+                  required
+                />
+                <label class="active" for="p_value">%</label>
+              </div>
             </div>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">input</i>
-              <input
-                type="number"
-                name="p_value"
-                value={this.state.p_value}
-                onChange={this.handlePChange.bind(this)}
-                onBlur={this.calculate.bind(this)}
-                autoComplete="off"
-                class="validate"
-                placeholder="ie. 50%"
-                required
-              />
-              <label class="active" for="p_value">%</label>
-            </div>
-          </div>
-          <div class="col s1"></div>
+            <div class="col s1"></div>
 
-          <div class="center">
-            <CalcButton
-              a_value={this.state.y_value}
-              b_value={this.state.p_value}
-            />
-          </div>
-          <p>
-            {this.getQuestion()}
-            {this.getAnswer()}
-          </p>
-        </form>
+            <div class="center">
+              <CalcButton
+                a_value={this.state.y_value}
+                b_value={this.state.p_value}
+              />
+            </div>
+            <p>
+              {this.getQuestion()}
+              {this.getAnswer()}
+            </p>
+          </form>
+        </div>
+
+        <FloatingMenu />
       </div>
     );
   }

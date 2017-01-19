@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import '../libs/common.js';
 import CalcButton from './calc_button.jsx';
+import FloatingMenu from './floating_menu.jsx';
 
 export default class PIncrease extends Component {
   constructor(props) {
@@ -13,6 +14,11 @@ export default class PIncrease extends Component {
       final_value: 0,
       increase_value: 0
     }
+  }
+
+  componentDidMount() {
+    Materialize.fadeInImage('#container');
+    $("#container").animate({"left":"0px"}, "slow");
   }
 
   handleSubmit(e) {
@@ -51,58 +57,62 @@ export default class PIncrease extends Component {
   render() {
     return (
       <div class="row">
-        <h5 class="center teal-text">Increase</h5>
-        <form class="col s12" onSubmit={this.handleSubmit.bind(this)}>
-          <div class="col s1"></div>
-          <div class="col s10">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">input</i>
-              <input
-                type="number"
-                name="initial_value"
-                value={this.state.initial_value}
-                onChange={this.handleInititalChange.bind(this)}
-                onBlur={this.calculate.bind(this)}
-                autoComplete="off"
-                min="0"
-                class="validate"
-                placeholder="ie. 100"
-                required
-              />
-              <label class="active" for="initial_value">Initial Value</label>
+        <div id="container" style={{position: 'absolute', left: '-300px'}}>
+          <h5 class="center deep-purple-text text-darken-2">% Increase</h5>
+          <form class="col s12" onSubmit={this.handleSubmit.bind(this)}>
+            <div class="col s1"></div>
+            <div class="col s10">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">input</i>
+                <input
+                  type="number"
+                  name="initial_value"
+                  value={this.state.initial_value}
+                  onChange={this.handleInititalChange.bind(this)}
+                  onBlur={this.calculate.bind(this)}
+                  autoComplete="off"
+                  min="0"
+                  class="validate"
+                  placeholder="ie. 100"
+                  required
+                />
+                <label class="active" for="initial_value">Initial Value</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">input</i>
+                <input
+                  type="number"
+                  name="increase"
+                  value={this.state.increase}
+                  onChange={this.handleIncreaseChange.bind(this)}
+                  onBlur={this.calculate.bind(this)}
+                  autoComplete="off"
+                  min="0"
+                  class="validate"
+                  placeholder="ie. 10"
+                  required
+                />
+                <label class="active" for="increase">Increase (%)</label>
+              </div>
             </div>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">input</i>
-              <input
-                type="number"
-                name="increase"
-                value={this.state.increase}
-                onChange={this.handleIncreaseChange.bind(this)}
-                onBlur={this.calculate.bind(this)}
-                autoComplete="off"
-                min="0"
-                class="validate"
-                placeholder="ie. 10"
-                required
-              />
-              <label class="active" for="increase">Increase (%)</label>
-            </div>
-          </div>
-          <div class="col s1"></div>
+            <div class="col s1"></div>
 
-          <div class="center">
-            <CalcButton
-              a_value={this.state.initial_value}
-              b_value={this.state.increase}
-            />
-          </div>
-          <p>
-            Final Value:&nbsp;
-              <strong>{this.state.final_value.formatMoney(2)}</strong><br/>
-            Increase Value:&nbsp;
-              <strong>{this.state.increase_value.formatMoney(2)}</strong>
-          </p>
-        </form>
+            <div class="center">
+              <CalcButton
+                a_value={this.state.initial_value}
+                b_value={this.state.increase}
+              />
+            </div>
+            <p>
+              Final Value:&nbsp;
+                <strong>{this.state.final_value.formatMoney(2)}</strong><br/>
+              Increase Value:&nbsp;
+                <strong>{this.state.increase_value.formatMoney(2)}</strong>
+            </p>
+          </form>
+        </div>
+
+        <FloatingMenu />
       </div>
     );
   }
