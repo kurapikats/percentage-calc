@@ -39,7 +39,8 @@ $ meteor run ios-device
 
 ##### This app was built with:
 
-* MeteorJS
-* MantraJS
-* ReactJS
-* MaterializeCSS
+* [Genymotion](https://www.genymotion.com/) (Android)
+* [MeteorJS](https://www.meteor.com/)
+* [MantraJS](http://mantrajs.com/)
+* [ReactJS](https://facebook.github.io/react/)
+* [MaterializeCSS](http://materializecss.com/)
