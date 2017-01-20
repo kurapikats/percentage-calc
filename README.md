@@ -39,7 +39,6 @@ $ meteor run ios-device
 
 ##### This app was built with:
 
-* [Genymotion](https://www.genymotion.com/) (Android)
 * [MeteorJS](https://www.meteor.com/)
 * [MantraJS](http://mantrajs.com/)
 * [ReactJS](https://facebook.github.io/react/)
