@@ -44,7 +44,7 @@ $ meteor run ios-device
 * [ReactJS](https://facebook.github.io/react/)
 * [MaterializeCSS](http://materializecss.com/)
 
-# License
+## License
 
 Mobile Percentage Calculators (C) 2016-2017 is available under ISC license.
 
