@@ -46,7 +46,7 @@ $ meteor run ios-device
 
 # License
 
-TaxiComplaints (C) 2015-2016 is available under MIT license.
+Mobile Percentage Calculators (C) 2016-2017 is available under MIT license.
 
 The MIT License (MIT)
 
